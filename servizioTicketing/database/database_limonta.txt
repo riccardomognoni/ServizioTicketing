@@ -1,6 +1,6 @@
 Entità:
-	- Clienti (inserire anche un admin)
-	- Dipendenti
+	- Clienti
+	- Dipendenti (inserire anche un admin)
 	- Ticket
 
 
