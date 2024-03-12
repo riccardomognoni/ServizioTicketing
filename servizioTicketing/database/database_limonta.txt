@@ -1,0 +1,9 @@
+Entità:
+	- Clienti
+	- Dipendenti (inserire anche un admin)
+	- Ticket
+
+
+Customers(ID, username, password, email, phoneNumber, idCode)
+Employees(ID, username, password, email, phoneNumber, role)
+Tickets(ID(N.Ticket di riferimento), possibleAction, state, area, operator, description, openDate, effectiveStart, closeDate, durationH, cliente, customerDescription, solutionDescription, referenceEmail, assignedTo, attached)
