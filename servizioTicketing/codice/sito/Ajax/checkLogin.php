@@ -14,7 +14,20 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $select = "SELECT ID, username, password, role FROM employees WHERE username = ? AND password = ? UNION SELECT ID, username, password, idCode FROM customers WHERE username = ? AND password = ?";
+    if (str_contains($username, "_"))
+    {
+        $select = "SELECT ID, username FROM customers WHERE username = ? AND password = ?";
+    }
+    else if (str_contains($username, "."))
+    {
+        $select = "SELECT ID, username FROM employees WHERE username = ? AND password = ?";
+    }
+    else
+    {
+        echo json_encode(array("status" => "error"));
+        return;
+    }
+
     $stmt = $conn->prepare($select);
     $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
@@ -22,13 +35,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        
-        if (array_key_exists("role", $row)) {
-            $_SESSION["role"] = $row["role"];
-            $_SESSION["ID"] = $row["ID"];
-        } else {
-            $_SESSION["idCode"] = $row["idCode"];
-        }
+        $_SESSION["ID"] = $row["ID"];
 
         echo json_encode(array("status" => "success"));
     } else {

@@ -1,0 +1,22 @@
+.container{
+    height: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.form{
+    background-color: rgb(40, 40, 40);
+    padding:1%;
+    width: 40%;
+    border-radius: 10px;
+}
+
+label{
+    color: white;
+    
+}
+
+body{
+    background-color: rgb(82, 82, 82);
+}
