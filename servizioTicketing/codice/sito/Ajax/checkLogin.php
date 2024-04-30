@@ -22,6 +22,10 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     {
         $select = "SELECT ID, username FROM employees WHERE username = ? AND password = ?";
     }
+    else if ($username === "admin")
+    {
+        $select = "SELECT ID, username FROM employees WHERE username = ? AND password = ?";
+    }
     else
     {
         echo json_encode(array("status" => "error"));

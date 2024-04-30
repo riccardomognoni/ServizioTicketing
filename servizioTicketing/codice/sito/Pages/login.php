@@ -34,7 +34,7 @@ if (!isset($_SESSION)) {
                         password: password
                     },
                     success: function (response) {
-                        // response = JSON.parse(response);
+                        response = JSON.parse(response);
                         if (response.status == "success") {
                             window.location.href = "./areaPersonale.php";
                         } else {
@@ -70,15 +70,7 @@ if (!isset($_SESSION)) {
                     <label for="inputPassword" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control border-black input" id="inputPassword" required>
                 </div>
-                <div class="mb-3">
-                    <i class="fa-solid fa-key" style="color: white;"></i>
-                    <label for="codice_identificativo">Codice identificativo:</label>
-                    <input type="password" id="codice" class="form-control border-black input" name="password" required>
-                </div>
                 <div class="mb-3" style="color:white">
-                    Chi sei?<br>
-                    <input type="radio" class="form-check-input" id="customers" name="remember"> Cliente<br>
-                    <input type="radio" class="form-check-input" id="employees" name="remember"> Impiegato<br>
                     <button type="submit" class="btn btn-outline-light">Login</button>
                 </div>
             </form>

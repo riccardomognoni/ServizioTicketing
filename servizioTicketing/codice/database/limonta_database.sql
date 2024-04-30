@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 08, 2024 alle 13:53
+-- Creato il: Apr 30, 2024 alle 12:54
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `limonta_database`
+-- Database: `limonta_db`
 --
 
 -- --------------------------------------------------------
@@ -36,6 +36,13 @@ CREATE TABLE `customers` (
   `idCode` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dump dei dati per la tabella `customers`
+--
+
+INSERT INTO `customers` (`ID`, `username`, `password`, `email`, `phoneNumber`, `idCode`) VALUES
+(2, 'tizio', 'caio', 'sempronio@ciao.sbuci', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +58,13 @@ CREATE TABLE `employees` (
   `role` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dump dei dati per la tabella `employees`
+--
+
+INSERT INTO `employees` (`ID`, `username`, `password`, `email`, `phoneNumber`, `role`) VALUES
+(1, 'admin', 'admin', 'test@gmail.com', NULL, 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -60,7 +74,7 @@ CREATE TABLE `employees` (
 CREATE TABLE `tickets` (
   `ID` int(11) NOT NULL,
   `possibleAction` varchar(16) NOT NULL,
-  `state` enum('Aperto','Chiuso','Sospeso','Annullato') NOT NULL,
+  `state` int(11) NOT NULL,
   `area` enum('Area PC e reti','AS400','Java','Contabilità','Formatori','Derma','Terzisti','Commerciali') DEFAULT NULL,
   `operator` varchar(32) DEFAULT NULL,
   `description` text NOT NULL,
@@ -75,6 +89,52 @@ CREATE TABLE `tickets` (
   `attached` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `ticket_area`
+--
+
+CREATE TABLE `ticket_area` (
+  `ID` int(11) NOT NULL,
+  `area` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dump dei dati per la tabella `ticket_area`
+--
+
+INSERT INTO `ticket_area` (`ID`, `area`) VALUES
+(1, 'Area PC e reti'),
+(2, 'AS400'),
+(3, 'Java'),
+(4, 'Contabilità'),
+(5, 'Formatori'),
+(6, 'Derma'),
+(7, 'Terzisti'),
+(8, 'Commerciali');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `ticket_state`
+--
+
+CREATE TABLE `ticket_state` (
+  `ID` int(11) NOT NULL,
+  `state` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dump dei dati per la tabella `ticket_state`
+--
+
+INSERT INTO `ticket_state` (`ID`, `state`) VALUES
+(1, 'Aperto'),
+(2, 'Chiuso'),
+(3, 'Sospeso'),
+(4, 'Annullato');
+
 --
 -- Indici per le tabelle scaricate
 --
@@ -83,7 +143,8 @@ CREATE TABLE `tickets` (
 -- Indici per le tabelle `customers`
 --
 ALTER TABLE `customers`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `idCode` (`idCode`);
 
 --
 -- Indici per le tabelle `employees`
@@ -98,6 +159,18 @@ ALTER TABLE `tickets`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indici per le tabelle `ticket_area`
+--
+ALTER TABLE `ticket_area`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indici per le tabelle `ticket_state`
+--
+ALTER TABLE `ticket_state`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -105,19 +178,31 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT per la tabella `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `tickets`
 --
 ALTER TABLE `tickets`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `ticket_area`
+--
+ALTER TABLE `ticket_area`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT per la tabella `ticket_state`
+--
+ALTER TABLE `ticket_state`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
