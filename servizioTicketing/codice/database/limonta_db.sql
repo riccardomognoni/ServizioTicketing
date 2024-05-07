@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Struttura della tabella `customers`
 --
-
+DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
   `ID` int(11) NOT NULL,
   `username` varchar(32) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE `customers` (
   `email` varchar(64) NOT NULL,
   `phoneNumber` varchar(20) DEFAULT NULL,
   `idCode` varchar(8) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `customers`
@@ -48,7 +48,7 @@ INSERT INTO `customers` (`ID`, `username`, `password`, `email`, `phoneNumber`, `
 --
 -- Struttura della tabella `employees`
 --
-
+DROP TABLE IF EXISTS `employees`;
 CREATE TABLE `employees` (
   `ID` int(11) NOT NULL,
   `username` varchar(32) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `employees` (
   `email` varchar(64) NOT NULL,
   `phoneNumber` varchar(20) DEFAULT NULL,
   `role` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `employees`
@@ -70,7 +70,7 @@ INSERT INTO `employees` (`ID`, `username`, `password`, `email`, `phoneNumber`, `
 --
 -- Struttura della tabella `tickets`
 --
-
+DROP TABLE IF EXISTS `tickets`;
 CREATE TABLE `tickets` (
   `ID` int(11) NOT NULL,
   `possibleAction` varchar(16) NOT NULL,
@@ -87,18 +87,18 @@ CREATE TABLE `tickets` (
   `referenceEmail` varchar(64) NOT NULL,
   `assignedTo` varchar(32) DEFAULT NULL,
   `attached` varchar(128) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
 --
 -- Struttura della tabella `ticket_area`
 --
-
+DROP TABLE IF EXISTS `ticket_area`;
 CREATE TABLE `ticket_area` (
   `ID` int(11) NOT NULL,
   `area` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `ticket_area`
@@ -119,11 +119,11 @@ INSERT INTO `ticket_area` (`ID`, `area`) VALUES
 --
 -- Struttura della tabella `ticket_state`
 --
-
+DROP TABLE IF EXISTS `ticket_state`;
 CREATE TABLE `ticket_state` (
   `ID` int(11) NOT NULL,
   `state` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `ticket_state`

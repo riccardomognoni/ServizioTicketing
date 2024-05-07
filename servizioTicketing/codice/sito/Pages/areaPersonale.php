@@ -1,3 +1,16 @@
+<?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (!isset($_SESSION["ID"])) {
+    header("Location: ./login.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,11 +33,11 @@
         <div class='divFind border border-black form'>
             <div class="row">
                 <div class="col col-6">
-                    <label for="dateFrom" class="form-label">Perido dal:</label>
+                    <label for="dateFrom" class="form-label">Periodo dal:</label>
                     <input type="date" class="form-control border-black input" id="dateFrom">
                 </div>
                 <div class="col col-6">
-                    <label for="dateTo" class="form-label">Perido fino al:</label>
+                    <label for="dateTo" class="form-label">Periodo fino al:</label>
                     <input type="date" class="form-control border-black input" id="dateTo">
                 </div>
             </div><br>

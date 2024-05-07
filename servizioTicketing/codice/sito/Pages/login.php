@@ -4,6 +4,16 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] === true) {
+    if ($_SESSION["role"] === "customer") {
+        header("Location: ./areaPersonale.php");
+    } else if ($_SESSION["role"] === "employee") {
+        header("Location: ./admin_home.php");
+    } else if ($_SESSION["role"] === "admin") {
+        header("Location: ./admin_home.php");
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -18,39 +28,8 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" href="../Cdn/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/home.css">
     <!--<link rel="stylesheet" href="../Cdn/fontawesome/all.min.css">-->
-    <script>
-        $(document).ready(function () {
-            $("form").submit(function (e) {
-                e.preventDefault();
-
-                let username = $("#inputUtente").val();
-                let password = $("#inputPassword").val();
-
-                $.ajax({
-                    url: "../Ajax/checkLogin.php",
-                    type: "POST",
-                    data: {
-                        username: username,
-                        password: password
-                    },
-                    success: function (response) {
-                        response = JSON.parse(response);
-                        if (response.status == "success") {
-                            window.location.href = "./areaPersonale.php";
-                        } else {
-                            alert("Invalid credentials");
-                        }
-                    },
-                    error: function (response) {
-                        console.log(response);
-                        alert("Error");
-                    }
-                });
-
-                return false;
-            });
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="../Js/login.js" defer></script>
 </head>
 
 <body style="padding-top: 10%;">

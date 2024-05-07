@@ -12,19 +12,22 @@ if ($conn->connect_error) {
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     $username = $_POST["username"];
-    $password = $_POST["password"];
+    $password = md5($_POST["password"]);
 
     if (str_contains($username, "_"))
     {
         $select = "SELECT ID, username FROM customers WHERE username = ? AND password = ?";
+        $_SESSION["role"] = "customer";
     }
     else if (str_contains($username, "."))
     {
         $select = "SELECT ID, username FROM employees WHERE username = ? AND password = ?";
+        $_SESSION["role"] = "employee";
     }
     else if ($username === "admin")
     {
         $select = "SELECT ID, username FROM employees WHERE username = ? AND password = ?";
+        $_SESSION["role"] = "admin";
     }
     else
     {
@@ -40,6 +43,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $_SESSION["ID"] = $row["ID"];
+        $_SESSION["is_logged"] = true;
 
         echo json_encode(array("status" => "success"));
     } else {
