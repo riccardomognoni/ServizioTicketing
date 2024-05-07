@@ -24,12 +24,18 @@ if ($_SESSION["role"] !== "admin") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN PAGE</title>
     <script src="../Js/jquery-3.7.1.min.js"></script>
-    <script src="../Cdn/bootstrap"></script>
+    <link rel="stylesheet" href="../Cdn/bootstrap/bootstrap.min.css">
 </head>
 
 <body>
 
+    <div class="container">
 
+        <form action="" method="POST">
+
+        </form>
+
+    </div>
 
 </body>
 

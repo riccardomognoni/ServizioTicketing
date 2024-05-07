@@ -49,10 +49,18 @@ if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] === true) {
                     <label for="inputPassword" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control border-black input" id="inputPassword" required>
                 </div>
+                <?php
+
+                if (isset($_SESSION['mail-sent']) && $_SESSION['mail-sent'] == true) {
+                    echo "<div id='error' style='color:white'>Il numero di tessera è stato inviato alla tua email</div>";
+                }
+
+                ?>
                 <div class="mb-3" style="color:white">
                     <button type="submit" class="btn btn-outline-light">Login</button>
                 </div>
             </form>
+
         </div>
 
     </div>
