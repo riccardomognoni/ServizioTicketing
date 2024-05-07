@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 30, 2024 alle 12:54
+-- Creato il: Mag 07, 2024 alle 12:52
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -26,13 +26,14 @@ SET time_zone = "+00:00";
 --
 -- Struttura della tabella `customers`
 --
-DROP TABLE IF EXISTS `customers`;
+
 CREATE TABLE `customers` (
   `ID` int(11) NOT NULL,
+  `nome` varchar(32) NOT NULL,
+  `cognome` varchar(32) NOT NULL,
   `username` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
   `email` varchar(64) NOT NULL,
-  `phoneNumber` varchar(20) DEFAULT NULL,
   `idCode` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -40,17 +41,20 @@ CREATE TABLE `customers` (
 -- Dump dei dati per la tabella `customers`
 --
 
-INSERT INTO `customers` (`ID`, `username`, `password`, `email`, `phoneNumber`, `idCode`) VALUES
-(2, 'tizio', 'caio', 'sempronio@ciao.sbuci', NULL, NULL);
+INSERT INTO `customers` (`ID`, `nome`, `cognome`, `username`, `password`, `email`, `idCode`) VALUES
+(2, '', '', 'tizio', 'caio', 'sempronio@ciao.sbuci', NULL),
+(7, 'Asd', 'Asd', 'asd_', '7815696ecbf1c96e6894b779456d330e', 'brandovardipietro@gmail.com', 'S0000001');
 
 -- --------------------------------------------------------
 
 --
 -- Struttura della tabella `employees`
 --
-DROP TABLE IF EXISTS `employees`;
+
 CREATE TABLE `employees` (
   `ID` int(11) NOT NULL,
+  `nome` varchar(32) DEFAULT NULL,
+  `cognome` varchar(32) DEFAULT NULL,
   `username` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
   `email` varchar(64) NOT NULL,
@@ -62,15 +66,15 @@ CREATE TABLE `employees` (
 -- Dump dei dati per la tabella `employees`
 --
 
-INSERT INTO `employees` (`ID`, `username`, `password`, `email`, `phoneNumber`, `role`) VALUES
-(1, 'admin', 'admin', 'test@gmail.com', NULL, 'admin');
+INSERT INTO `employees` (`ID`, `nome`, `cognome`, `username`, `password`, `email`, `phoneNumber`, `role`) VALUES
+(1, NULL, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'test@gmail.com', NULL, 'admin');
 
 -- --------------------------------------------------------
 
 --
 -- Struttura della tabella `tickets`
 --
-DROP TABLE IF EXISTS `tickets`;
+
 CREATE TABLE `tickets` (
   `ID` int(11) NOT NULL,
   `possibleAction` varchar(16) NOT NULL,
@@ -94,7 +98,7 @@ CREATE TABLE `tickets` (
 --
 -- Struttura della tabella `ticket_area`
 --
-DROP TABLE IF EXISTS `ticket_area`;
+
 CREATE TABLE `ticket_area` (
   `ID` int(11) NOT NULL,
   `area` varchar(16) NOT NULL
@@ -119,7 +123,7 @@ INSERT INTO `ticket_area` (`ID`, `area`) VALUES
 --
 -- Struttura della tabella `ticket_state`
 --
-DROP TABLE IF EXISTS `ticket_state`;
+
 CREATE TABLE `ticket_state` (
   `ID` int(11) NOT NULL,
   `state` varchar(16) NOT NULL
@@ -144,6 +148,7 @@ INSERT INTO `ticket_state` (`ID`, `state`) VALUES
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `idCode` (`idCode`);
 
 --
@@ -178,7 +183,7 @@ ALTER TABLE `ticket_state`
 -- AUTO_INCREMENT per la tabella `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `employees`
