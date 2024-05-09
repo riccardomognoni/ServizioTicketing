@@ -17,7 +17,7 @@ $(document).ready(function () {
             success: function (response) {
                 response = JSON.parse(response);
                 if (response.status == "success") {
-                    window.location.href = "./areaPersonale.php";
+                    window.location.href = "./Users/areaPersonale.php";
                 } else {
                     alert("Invalid credentials");
                 }
@@ -31,22 +31,3 @@ $(document).ready(function () {
         return false;
     });
 });
-
-function replaceAll(find, replace, str) {
-    return str.replace(new RegExp(find, 'g'), replace);
-}
-function calc(value) {
-    let password = value;
-    let hashValue = "";
-    if (password.length == 0) {
-        return "";
-    }
-
-    if (password.search("\r") > 0) password = replaceAll("\r", "", password);
-    let strHash = hex_sha256(password);
-    strHash = strHash.toLowerCase();
-
-    hashValue = strHash;
-
-    return hashValue;
-}

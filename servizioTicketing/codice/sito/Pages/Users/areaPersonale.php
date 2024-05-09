@@ -5,12 +5,12 @@ if (!isset($_SESSION)) {
 }
 
 if (!isset($_SESSION["ID"])) {
-    header("Location: ./login.php");
+    header("Location: ../login.php");
     exit();
 }
 
 if ($_SESSION["role"] === "admin") {
-    header("Location: ./Admin/admin_home.php");
+    header("Location: ../Admin/admin_home.php");
     exit();
 }
 
@@ -23,11 +23,11 @@ if ($_SESSION["role"] === "admin") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Area Personale</title>
-    <script src="../Js/jquery-3.7.1.min.js"></script>
-    <script src="../Js/areaPersonale.js"></script>
-    <script src="../Cdn/bootstrap/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../Cdn/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../Css/find.css">
+    <script src="../../Js/jquery-3.7.1.min.js"></script>
+    <script src="../../Js/areaPersonale.js"></script>
+    <script src="../../Cdn/bootstrap/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../Cdn/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Css/find.css">
     <!--<link rel="stylesheet" href="../Cdn/fontawesome/all.min.css">-->
 
 </head>
@@ -83,7 +83,6 @@ if ($_SESSION["role"] === "admin") {
                     <label for="internalPerson" class="form-label">Persona interna:</label>
                     <select id="internalPerson" class="form-control input">
                         <option value="" selected disabled>Seleziona il personale interno</option>
-                        <option value="derma">Derma</option>
                     </select>
                 </div>
             </div><br>
@@ -92,6 +91,19 @@ if ($_SESSION["role"] === "admin") {
                 <div class="col col-6">
                     <label for="client" class="form-label">Cliente:</label>
                     <input type="text" name="cliente" id="cliente" class="form-control border-black input">
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col col-6">
+                    <button class="btn btn-primary" id="btnFind">Cerca</button>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col col-6">
+                    <button class="btn btn-primary" onclick="window.location.href='./createTicket.php'">Nuovo Ticket</button>
+                </div>
+                <div class="col col-6">
+                    <button class="btn btn-primary" id="btnNewCustomers">Nuovo Cliente</button>
                 </div>
             </div>
         </div>
