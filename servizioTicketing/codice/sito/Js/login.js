@@ -1,9 +1,11 @@
 $(document).ready(function () {
-    $("form").submit(function (e) {
+    $("form").submit(async function (e) {
         e.preventDefault();
 
-        let username = $("#inputUtente").val();
-        let password = $("#inputPassword").val();
+        let username = $("#username").val();
+        let password = calc($("#password").val());
+
+        console.log(password);
 
         $.ajax({
             type: "POST",
@@ -29,3 +31,22 @@ $(document).ready(function () {
         return false;
     });
 });
+
+function replaceAll(find, replace, str) {
+    return str.replace(new RegExp(find, 'g'), replace);
+}
+function calc(value) {
+    let password = value;
+    let hashValue = "";
+    if (password.length == 0) {
+        return "";
+    }
+
+    if (password.search("\r") > 0) password = replaceAll("\r", "", password);
+    let strHash = hex_sha256(password);
+    strHash = strHash.toLowerCase();
+
+    hashValue = strHash;
+
+    return hashValue;
+}

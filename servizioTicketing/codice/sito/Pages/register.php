@@ -8,9 +8,9 @@ if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] === true) {
     if ($_SESSION["role"] === "customer") {
         header("Location: ./areaPersonale.php");
     } else if ($_SESSION["role"] === "employee") {
-        header("Location: ./admin_home.php");
+        header("Location: ./Admin/admin_home.php");
     } else if ($_SESSION["role"] === "admin") {
-        header("Location: ./admin_home.php");
+        header("Location: ./Admin/admin_home.php");
     }
 }
 
@@ -27,6 +27,7 @@ if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] === true) {
     <script src="../Js/jquery-3.7.1.min.js"></script>
     <script src="../Js/request.js" defer></script>
     <script src="../Js/register.js"></script>
+    <script src="../Js/Secure/crypto.js" defer></script>
     <link href="../Css/home.css" rel="stylesheet">
 </head>
 
@@ -64,6 +65,10 @@ if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] === true) {
                 </div>
                 <div class="mb-3">
                     <input type="submit" class="btn btn-outline-light" value="Registrati">
+                </div>
+                
+                <div class="mb-3" style="color:white">
+                    Hai già un'account? <a href="./login.php">Entra subito!</a>
                 </div>
             </form>
             

@@ -12,7 +12,7 @@ $(document).ready(function () {
         if (valore.includes(" ")) {
             let array = valore.split(" ");
             let stringa = "";
-            
+
             array.forEach(parola => {
                 stringa += parola.charAt(0).toUpperCase() + parola.slice(1) + " ";
             });
@@ -44,12 +44,13 @@ $(document).ready(function () {
         let nome = $("#nome").val();
         let cognome = $("#cognome").val();
         let username = $("#username").val();
-        if (!username.includes("_")) {
+        let ruolo = $("#ruolo").val();
+        if (!username.includes("_") && (ruolo === null || ruolo === undefined)) {
             $("#error").html("L'username deve contenere il carattere _");
             return false;
         }
-        let password = $("#password").val();
-        let confermaPassword = $("#confermaPassword").val();
+        let password = calc($("#password").val());
+        let confermaPassword = calc($("#confermaPassword").val());
         if (password != confermaPassword) {
             $("#error").html("Le password non coincidono");
             return false;
@@ -60,15 +61,30 @@ $(document).ready(function () {
             return false;
         }
 
-        let data = {
-            nome: nome,
-            cognome: cognome,
-            username: username,
-            password: password,
-            email: email
-        };
+        let data = {};
+        if (ruolo !== null && ruolo !== undefined) {
+            data = {
+                nome: nome,
+                cognome: cognome,
+                username: username,
+                password: password,
+                email: email,
+                ruolo: ruolo
+            };
+        }
+        else {
+            data = {
+                nome: nome,
+                cognome: cognome,
+                username: username,
+                password: password,
+                email: email
+            };
+        }
 
-        let response = await request($("form").attr("method"), "../Ajax/checkRegistration.php", data);
+        let response = await request($("form").attr("method"),
+            (!ruolo) ? "../Ajax/checkRegistration.php" : "../../Ajax/checkRegistration.php",
+            data);
 
         response = JSON.parse(response);
         let message = response.message;
@@ -102,4 +118,23 @@ $(document).ready(function () {
 function validateEmail(email) {
     let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return regex.test(email);
+}
+
+function replaceAll(find, replace, str) {
+    return str.replace(new RegExp(find, 'g'), replace);
+}
+function calc(value) {
+    let password = value;
+    let hashValue = "";
+    if (password.length == 0) {
+        return "";
+    }
+
+    if (password.search("\r") > 0) password = replaceAll("\r", "", password);
+    let strHash = hex_sha256(password);
+    strHash = strHash.toLowerCase();
+
+    hashValue = strHash;
+
+    return hashValue;
 }

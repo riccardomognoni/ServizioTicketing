@@ -10,7 +10,7 @@ if (!isset($_SESSION["ID"])) {
 }
 
 if ($_SESSION["role"] === "admin") {
-    header("Location: ./admin_home.php");
+    header("Location: ./Admin/admin_home.php");
     exit();
 }
 

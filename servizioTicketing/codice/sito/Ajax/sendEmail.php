@@ -38,8 +38,6 @@ if ($result->num_rows == 0) {
     exit;
 }
 
-$conn->close();
-
 try {
     // imposto i parametri del server SMTP
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -70,5 +68,11 @@ try {
     $_SESSION["mail-sent"] = true;
     echo json_encode(array("status" => "success"));
 } catch (Exception $e) {
+    $delete = "DELETE FROM customers WHERE email = ?";
+    $stmt = $conn->prepare($delete);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->close();
+
     echo json_encode(array("status" => "error", "message" => "Errore nell'invio dell'email"));
 }

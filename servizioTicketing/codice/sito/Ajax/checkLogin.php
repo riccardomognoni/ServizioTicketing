@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     $username = $_POST["username"];
-    $password = md5($_POST["password"]);
+    $password = $_POST["password"];
 
     if (str_contains($username, "_"))
     {

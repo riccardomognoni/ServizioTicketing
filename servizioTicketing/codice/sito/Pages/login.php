@@ -8,9 +8,9 @@ if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] === true) {
     if ($_SESSION["role"] === "customer") {
         header("Location: ./areaPersonale.php");
     } else if ($_SESSION["role"] === "employee") {
-        header("Location: ./admin_home.php");
+        header("Location: ./Admin/admin_home.php");
     } else if ($_SESSION["role"] === "admin") {
-        header("Location: ./admin_home.php");
+        header("Location: ./Admin/admin_home.php");
     }
 }
 
@@ -30,6 +30,7 @@ if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] === true) {
     <!--<link rel="stylesheet" href="../Cdn/fontawesome/all.min.css">-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script src="../Js/login.js" defer></script>
+    <script src="../Js/Secure/crypto.js" defer></script>
 </head>
 
 <body style="padding-top: 10%;">
@@ -42,12 +43,14 @@ if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] === true) {
                 <div class="mb-3">
                     <i class="fa-solid fa-user" style="color: white;"></i>
                     <label for="inputUtente" class="form-label">Utente</label>
-                    <input type="text" name="username" class="form-control border-black input" id="inputUtente" required>
+                    <input type="text" name="username" class="form-control border-black input" id="username"
+                        required>
                 </div>
                 <div class="mb-3">
                     <i class="fa-solid fa-key" style="color: white;"></i>
                     <label for="inputPassword" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control border-black input" id="inputPassword" required>
+                    <input type="password" name="password" class="form-control border-black input" id="password"
+                        required>
                 </div>
                 <?php
 
@@ -58,6 +61,9 @@ if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] === true) {
                 ?>
                 <div class="mb-3" style="color:white">
                     <button type="submit" class="btn btn-outline-light">Login</button>
+                </div>
+                <div class="mb-3" style="color:white">
+                    Non sei registrato? <a href="./register.php">Registrati</a>
                 </div>
             </form>
 
