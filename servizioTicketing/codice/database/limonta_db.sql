@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 07, 2024 alle 12:52
+-- Creato il: Mag 09, 2024 alle 22:32
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -26,13 +26,13 @@ SET time_zone = "+00:00";
 --
 -- Struttura della tabella `customers`
 --
-DROP TABLE IF EXISTS `customers`;
+
 CREATE TABLE `customers` (
   `ID` int(11) NOT NULL,
   `nome` varchar(32) NOT NULL,
   `cognome` varchar(32) NOT NULL,
   `username` varchar(32) NOT NULL,
-  `password` varchar(32) NOT NULL,
+  `password` varchar(64) NOT NULL,
   `email` varchar(64) NOT NULL,
   `idCode` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -42,21 +42,21 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`ID`, `nome`, `cognome`, `username`, `password`, `email`, `idCode`) VALUES
-(2, '', '', 'tizio', 'caio', 'sempronio@ciao.sbuci', NULL),
-(7, 'Asd', 'Asd', 'asd_', '7815696ecbf1c96e6894b779456d330e', 'brandovardipietro@gmail.com', 'S0000001');
+(2, '', '', 'tizio', 'b133a0c0e9bee3be20163d2ad31d6248db292aa6dcb1ee087a2aa50e0fc75ae2', 'sempronio@ciao.sbuci', NULL),
+(7, 'Asd', 'Asd', 'asd_', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'brandovardipietro@gmail.com', 'S0000001');
 
 -- --------------------------------------------------------
 
 --
 -- Struttura della tabella `employees`
 --
-DROP TABLE IF EXISTS `employees`;
+
 CREATE TABLE `employees` (
   `ID` int(11) NOT NULL,
   `nome` varchar(32) DEFAULT NULL,
   `cognome` varchar(32) DEFAULT NULL,
   `username` varchar(32) NOT NULL,
-  `password` varchar(32) NOT NULL,
+  `password` varchar(64) NOT NULL,
   `email` varchar(64) NOT NULL,
   `phoneNumber` varchar(20) DEFAULT NULL,
   `role` varchar(32) NOT NULL
@@ -67,14 +67,15 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`ID`, `nome`, `cognome`, `username`, `password`, `email`, `phoneNumber`, `role`) VALUES
-(1, NULL, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'test@gmail.com', NULL, 'admin');
+(1, NULL, NULL, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'test@gmail.com', NULL, 'admin'),
+(2, 'Sss', 'Sss', 'sss', 'a871c47a7f48a12b38a994e48a9659fab5d6376f3dbce37559bcb617efe8662d', 'sdf@sdf.sdf', NULL, 'admin');
 
 -- --------------------------------------------------------
 
 --
 -- Struttura della tabella `tickets`
 --
-DROP TABLE IF EXISTS `tickets`;
+
 CREATE TABLE `tickets` (
   `ID` int(11) NOT NULL,
   `possibleAction` varchar(16) NOT NULL,
@@ -89,7 +90,7 @@ CREATE TABLE `tickets` (
   `solutionDescription` text NOT NULL,
   `eventualNotes` text DEFAULT NULL,
   `referenceEmail` varchar(64) NOT NULL,
-  `assignedTo` varchar(32) DEFAULT NULL,
+  `assignedFrom` varchar(32) DEFAULT NULL,
   `attached` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -98,7 +99,7 @@ CREATE TABLE `tickets` (
 --
 -- Struttura della tabella `ticket_area`
 --
-DROP TABLE IF EXISTS `ticket_area`;
+
 CREATE TABLE `ticket_area` (
   `ID` int(11) NOT NULL,
   `area` varchar(16) NOT NULL
@@ -123,7 +124,7 @@ INSERT INTO `ticket_area` (`ID`, `area`) VALUES
 --
 -- Struttura della tabella `ticket_state`
 --
-DROP TABLE IF EXISTS `ticket_state`;
+
 CREATE TABLE `ticket_state` (
   `ID` int(11) NOT NULL,
   `state` varchar(16) NOT NULL
@@ -155,7 +156,9 @@ ALTER TABLE `customers`
 -- Indici per le tabelle `employees`
 --
 ALTER TABLE `employees`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indici per le tabelle `tickets`
@@ -183,13 +186,13 @@ ALTER TABLE `ticket_state`
 -- AUTO_INCREMENT per la tabella `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT per la tabella `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `tickets`
