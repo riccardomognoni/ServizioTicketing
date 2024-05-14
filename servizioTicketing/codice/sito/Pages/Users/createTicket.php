@@ -27,20 +27,50 @@ if (!isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] !== true) {
 
 <body style="padding-top: 10%">
     <div class="container">
-        <div class='divFind border border-black form'>\
-            <div class="row">
-                <div class="col col-6">
-                    <label for="title" class="form-label">Titolo:</label>
-                    <input type="text" class="form-control border-black input" id="title">
-                </div>
-            </div><br>
+        <div class='divFind border border-black form'>
+            <form>
+                <div class="row">
+                    <div class="col col-6">
+                        <label for="title" class="form-label">Titolo:</label>
+                        <input type="text" class="form-control border-black input" id="title">
+                    </div>
+                </div><br>
 
-            <div class="row">
-                <div class="col col-6">
-                    <label for="description" class="form-label">Descrizione problema:</label>
-                    <input type="text" class="form-control border-black input" id="description">
+                <div class="row">
+                    <div class="col col-6">
+                        <label for="description" class="form-label">Descrizione problema:</label>
+                        <input type="text" class="form-control border-black input" id="description">
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col col-6">
+                        <label for="email" class="form-label">Email utente:</label>
+                        <input type="email" class="form-control border-black input" id="email">
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col col-6">
+                        <label for="allegato" class="form-label">Eventuali allegati:</label>
+                        <input type="file" class="form-control border-black input" id="allegato">
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col col-4">
+                        <input type="submit" class="btn btn-primary" value="Crea ticket">
+                    </div><br>
                 </div>
-            </div><br>
+            </form>
+            <div>
+                <div class="col col-4">
+                    <button class="btn btn-primary" onclick="window.location.href='./areaPersonale.php'">Home</button>
+                </div><br>
+                <div class="col col-4 text-right">
+                    <button class="btn btn-danger" onclick="window.location.href='../logout.php'">Logout</button>
+                </div>
+            </div>
         </div>
     </div>
 
