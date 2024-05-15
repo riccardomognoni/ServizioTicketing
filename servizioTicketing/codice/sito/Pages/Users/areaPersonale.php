@@ -102,8 +102,8 @@ if ($_SESSION["role"] === "admin") {
                 <div class="col col-6">
                     <button class="btn btn-primary" onclick="window.location.href='./createTicket.php'">Nuovo Ticket</button>
                 </div>
-                <div class="col col-6">
-                    <button class="btn btn-primary" id="btnNewCustomers">Nuovo Cliente</button>
+                <div class="col col-4 text-right">
+                    <button class="btn btn-danger" onclick="window.location.href='../logout.php'">Logout</button>
                 </div>
             </div>
         </div>
