@@ -30,42 +30,41 @@ if ($_SESSION["role"] === "employee") {
     <title>Crea un nuovo Ticket</title>
     <script src="../../Js/jquery-3.7.1.min.js"></script>
     <script src="../../Js/createTicket.js"></script>
+    <script src="../../Js/template.js"></script>
     <script src="../../Cdn/bootstrap/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../Cdn/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../Css/find.css">
 </head>
 
-<body style="padding-top: 10%">
-    <div class="container">
+<body>
+    <nav>
+        <script>
+            generateNavBar('customer');
+        </script>
+    </nav>
+    <div class="container" style="padding-top: 5%">
         <div class='divFind border border-black form'>
             <form>
-                <div class="row">
-                    <div class="col col-6">
-                        <label for="title" class="form-label">Titolo:</label>
-                        <input type="text" class="form-control border-black input" id="title">
-                    </div>
-                </div><br>
-
-                <div class="row">
-                    <div class="col col-6">
-                        <label for="description" class="form-label">Descrizione problema:</label>
-                        <input type="text" class="form-control border-black input" id="description">
-                    </div>
-                </div><br>
-
-                <div class="row">
-                    <div class="col col-6">
+                <div class="mb-3">
+                    <i class="fa-solid fa-user" style="color: white;"></i>
+                    <label for="title" class="form-label">Titolo:</label>
+                    <input type="text" class="form-control border-black input" id="title" required />
+                </div>
+                <div class="mb-3">
+                    <i class="fa-solid fa-user" style="color: white;"></i>
+                    <label for="description" class="form-label">Descrizione problema:</label>
+                    <textarea class="form-control border-black input" id="description" rows="5" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <i class="fa-solid fa-user" style="color: white;"></i>
                         <label for="email" class="form-label">Email utente:</label>
-                        <input type="email" class="form-control border-black input" id="email">
-                    </div>
-                </div><br>
-
-                <div class="row">
-                    <div class="col col-6">
+                        <input type="email" class="form-control border-black input" id="email" required/>
+                </div>
+                <div class="mb-3">
+                    <i class="fa-solid fa-user" style="color: white;"></i>
                         <label for="allegato" class="form-label">Eventuali allegati:</label>
-                        <input type="file" class="form-control border-black input" id="allegato">
-                    </div>
-                </div><br>
+                        <input type="file" class="form-control border-black input" id="allegato" />
+                </div>
 
                 <div class="row">
                     <div class="col col-4">
@@ -73,14 +72,6 @@ if ($_SESSION["role"] === "employee") {
                     </div><br>
                 </div>
             </form>
-            <div>
-                <div class="col col-4">
-                    <button class="btn btn-primary" onclick="window.location.href='./areaPersonale.php'">Home</button>
-                </div><br>
-                <div class="col col-4 text-right">
-                    <button class="btn btn-danger" onclick="window.location.href='../logout.php'">Logout</button>
-                </div>
-            </div>
         </div>
     </div>
 

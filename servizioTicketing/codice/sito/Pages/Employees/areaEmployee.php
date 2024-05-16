@@ -29,6 +29,7 @@ if ($_SESSION["role"] === "customer") {
     <title>Area Personale</title>
     <script src="../../Js/jquery-3.7.1.min.js"></script>
     <script src="../../Js/areaPersonale.js"></script>
+    <script src="../../Js/template.js"></script>
     <script src="../../Cdn/bootstrap/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../Cdn/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../Css/find.css">
@@ -36,8 +37,13 @@ if ($_SESSION["role"] === "customer") {
 
 </head>
 
-<body style="padding-top: 10%">
-    <div class="container">
+<body>
+    <nav>
+        <script>
+            generateNavBar('employee');
+        </script>
+    </nav>
+    <div class="container"  style="padding-top: 5%">
         <div class='divFind border border-black form'>
             <div class="row">
                 <div class="col col-6">
@@ -100,15 +106,15 @@ if ($_SESSION["role"] === "customer") {
                 <div class="col col-6">
                     <button class="btn btn-primary" id="btnFind">Cerca</button>
                 </div>
-            </div><br>
-            <div class="row">
-                <!--<div class="col col-6">
-                    <button class="btn btn-primary" onclick="window.location.href='./createTicket.php'">Nuovo Ticket</button>
-                </div>-->
+            </div>
+            <!-- <div class="row">
+                <div class="col col-6">
+                    <button class="btn btn-primary" onclick="window.location.href='./createticket.php'">nuovo ticket</button>
+                </div>
                 <div class="col col-4 text-right">
                     <button class="btn btn-danger" onclick="window.location.href='../logout.php'">Logout</button>
                 </div>
-            </div>
+            </div> -->
         </div>
 </body>
 

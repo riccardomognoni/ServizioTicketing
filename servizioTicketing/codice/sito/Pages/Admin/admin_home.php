@@ -26,12 +26,19 @@ if ($_SESSION["role"] !== "admin") {
     <script src="../../Js/jquery-3.7.1.min.js"></script>
     <script src="../../Js/request.js" defer></script>
     <script src="../../Js/register.js" defer></script>
+    <script src="../../Js/template.js"></script>
     <script src="../../Js/Secure/crypto.js" defer></script>
     <link rel="stylesheet" href="../../Cdn/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../Css/home.css">
 </head>
 
 <body>
+
+    <nav>
+        <script>
+            generateNavBar('admin');
+        </script>
+    </nav>
 
     <div class="container">
 
@@ -44,9 +51,6 @@ if ($_SESSION["role"] !== "admin") {
                 <div class="col col-4">
                     <button class="btn btn-primary" onclick="window.location.href='./addDipendente.php'">Aggiungi
                         Dipendente</button>
-                </div>
-                <div class="col col-4 text-right">
-                    <button class="btn btn-danger" onclick="window.location.href='../logout.php'">Logout</button>
                 </div>
             </div>
         </div>

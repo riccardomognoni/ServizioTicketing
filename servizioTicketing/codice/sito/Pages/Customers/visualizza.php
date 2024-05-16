@@ -30,12 +30,21 @@ if ($_SESSION["role"] === "employee") {
     <title>visualizza Ticket</title>
     <script src="../../Js/jquery-3.7.1.min.js"></script>
     <script src="../../Cdn/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../../Js/template.js"></script>
     <link rel="stylesheet" href="../../Cdn/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../Css/find.css">
 </head>
+
 <body>
+    <nav>
+        <script>
+            generateNavBar('customer');
+        </script>
+    </nav>
+
     <div>
-        
+
     </div>
 </body>
+
 </html>
