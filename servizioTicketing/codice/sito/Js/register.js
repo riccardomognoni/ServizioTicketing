@@ -41,12 +41,18 @@ $(document).ready(function () {
     $("form").submit(async function (e) {
         e.preventDefault();
 
+        $("#error").html("");
+
         let nome = $("#nome").val();
         let cognome = $("#cognome").val();
         let username = $("#username").val();
         let ruolo = $("#ruolo").val();
         if (!username.includes("_") && (ruolo === null || ruolo === undefined)) {
             $("#error").html("L'username deve contenere il carattere _");
+            return false;
+        }
+        if (!username.includes(".") && ruolo === "employee") {
+            $("#error").html("L'username per il dipendente deve contenere il carattere .");
             return false;
         }
         let password = calc($("#password").val());
@@ -95,13 +101,13 @@ $(document).ready(function () {
                 subject: "Registrazione avvenuta con successo",
                 message: message
             };
-            let response = await request($("form").attr("method"), "../Ajax/sendEmail.php", data);
-            let array = response.split("<br>");
+            let response = await request($("form").attr("method"), (!ruolo) ? "../Ajax/sendEmail.php" : "../../Ajax/sendEmail.php", data);
+            /*let array = response.split("<br>");*/
 
-            response = JSON.parse(array[array.length - 1].trim());
+            /*response = JSON.parse(array[array.length - 1].trim());*/
 
             if (response.status == "success") {
-                window.location.href = "./login.php";
+                (!ruolo) ? window.location.href = "./login.php": window.location.href = "./admin_home.php";
             } else {
                 $("#error").html("Errore nell'invio dell'email di conferma");
             }

@@ -10,7 +10,7 @@ if (!isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] !== true) {
 }
 
 if ($_SESSION["role"] !== "admin") {
-    header("Location: ../login.php");
+    header("Location: ../logout.php");
     exit();
 }
 

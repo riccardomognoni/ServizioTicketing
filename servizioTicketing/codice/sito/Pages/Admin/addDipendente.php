@@ -10,7 +10,7 @@ if (!isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] !== true) {
 }
 
 if ($_SESSION["role"] !== "admin") {
-    header("Location: ../login.php");
+    header("Location: ../logout.php");
     exit();
 }
 
@@ -62,7 +62,7 @@ if ($_SESSION["role"] !== "admin") {
                 </div>
                 <div class="mb-3">
                     <label for="confermaPassword" class="form-label">Conferma Password</label>
-                    <input type="confermaPassword" name="confermaPassword" class="form-control border-black input" id="confermaPassword" required>
+                    <input type="password" name="confermaPassword" class="form-control border-black input" id="confermaPassword" required>
                 </div>
                 <div class="mb-3">
                     <label for="ruolo" class="form-label">Ruolo</label><br>
@@ -71,6 +71,7 @@ if ($_SESSION["role"] !== "admin") {
                         <option value="employee">Dipendente</option>
                     </select>
                 </div>
+                <div id="error" class="mt-3"></div>
                 <div class="mb-3">
                     <input type="submit" class="btn btn-outline-light" value="Registrati">
                 </div>

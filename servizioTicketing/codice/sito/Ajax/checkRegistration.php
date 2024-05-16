@@ -24,10 +24,15 @@ if (
     $nome = ucfirst(strtolower($_POST['nome']));
     $cognome = ucfirst(strtolower($_POST['cognome']));
     $username = strtolower($_POST['username']);
-    if (!str_contains($username, "_") && !isset($_POST['ruolo'])) {
+    /*if (!str_contains($username, "_") && $_POST['ruolo'] == "employee") {
         echo json_encode(array("status" => "error", "message" => "L'username deve contenere il carattere '_'"));
         exit;
     }
+
+    if (!str_contains($username, ".") && !isset($_POST['ruolo'])) {
+        echo json_encode(array("status" => "error", "message" => "L'username per il dipendente deve contenere il carattere '.'"));
+        exit;
+    }*/
     $password = $_POST['password'];
     $email = $_POST['email'];
     if (!checkEmail($email)) {

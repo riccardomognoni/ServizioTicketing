@@ -14,6 +14,10 @@ if ($_SESSION["role"] === "admin") {
     exit();
 }
 
+if ($_SESSION["role"] === "employee") {
+    header("Location: ../Employees/areaEmployee.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +28,7 @@ if ($_SESSION["role"] === "admin") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Area Personale</title>
     <script src="../../Js/jquery-3.7.1.min.js"></script>
-    <script src="../../Js/areaPersonale.js"></script>
+    <script src="../../Js/goToVisualizza.js"></script>
     <script src="../../Cdn/bootstrap/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../Cdn/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../Css/find.css">
@@ -34,7 +38,6 @@ if ($_SESSION["role"] === "admin") {
 
 <body style="padding-top: 10%">
     <div class="container">
-
         <div class='divFind border border-black form'>
             <div class="row">
                 <div class="col col-6">
@@ -63,7 +66,7 @@ if ($_SESSION["role"] === "admin") {
                     </select>
                 </div>
             </div><br>
-
+            <!--
             <div class="row">
                 <div class="col col-6">
                     <label for="group" class="form-label">Gruppo tecnico:</label>
@@ -85,17 +88,17 @@ if ($_SESSION["role"] === "admin") {
                         <option value="" selected disabled>Seleziona il personale interno</option>
                     </select>
                 </div>
-            </div><br>
-
+            </div><br>-->
+            <!--
             <div class="row">
                 <div class="col col-6">
                     <label for="client" class="form-label">Cliente:</label>
                     <input type="text" name="cliente" id="cliente" class="form-control border-black input">
                 </div>
-            </div><br>
+            </div><br>-->
             <div class="row">
                 <div class="col col-6">
-                    <button class="btn btn-primary" id="btnFind">Cerca</button>
+                    <button class="btn btn-primary" id="btnFind" onclick="visualizza()">Cerca</button>
                 </div>
             </div><br>
             <div class="row">

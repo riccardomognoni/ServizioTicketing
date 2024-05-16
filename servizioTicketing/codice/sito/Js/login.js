@@ -5,7 +5,7 @@ $(document).ready(function () {
         let username = $("#username").val();
         let password = calc($("#password").val());
 
-        console.log(password);
+        //console.log(password);
 
         $.ajax({
             type: "POST",
@@ -17,7 +17,7 @@ $(document).ready(function () {
             success: function (response) {
                 response = JSON.parse(response);
                 if (response.status == "success") {
-                    window.location.href = "./Users/areaPersonale.php";
+                    window.location.href = "./Employees/areaEmployee.php";
                 } else {
                     alert("Invalid credentials");
                 }

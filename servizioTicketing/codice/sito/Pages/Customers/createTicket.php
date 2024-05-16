@@ -9,6 +9,16 @@ if (!isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] !== true) {
     exit();
 }
 
+if ($_SESSION["role"] === "admin") {
+    header("Location: ../Admin/admin_home.php");
+    exit();
+}
+
+if ($_SESSION["role"] === "employee") {
+    header("Location: ../Employees/areaEmployee.php");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>

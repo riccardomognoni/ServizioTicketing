@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 
 if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"] === true) {
     if ($_SESSION["role"] === "customer") {
-        header("Location: ./areaPersonale.php");
+        header("Location: ./Customers/areaPersonale.php");
     } else if ($_SESSION["role"] === "employee") {
-        header("Location: ./Admin/admin_home.php");
+        header("Location: ./Employees/areaEmployee.php");
     } else if ($_SESSION["role"] === "admin") {
         header("Location: ./Admin/admin_home.php");
     }
