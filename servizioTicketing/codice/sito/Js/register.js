@@ -102,10 +102,10 @@ $(document).ready(function () {
                 message: message
             };
             let response = await request($("form").attr("method"), (!ruolo) ? "../Ajax/sendEmail.php" : "../../Ajax/sendEmail.php", data);
-            /*let array = response.split("<br>");*/
+            let array = response.split("<br>");
 
-            /*response = JSON.parse(array[array.length - 1].trim());*/
-
+            response = JSON.parse(array[array.length - 1].trim());
+            
             if (response.status == "success") {
                 (!ruolo) ? window.location.href = "./login.php": window.location.href = "./admin_home.php";
             } else {
