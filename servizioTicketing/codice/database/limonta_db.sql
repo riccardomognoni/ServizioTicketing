@@ -43,7 +43,7 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`ID`, `nome`, `cognome`, `username`, `password`, `email`, `idCode`) VALUES
 (2, '', '', 'tizio', 'b133a0c0e9bee3be20163d2ad31d6248db292aa6dcb1ee087a2aa50e0fc75ae2', 'sempronio@ciao.sbuci', NULL),
-(7, 'Asd', 'Asd', 'asd_', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'brandovardipietro@gmail.com', 'S0000001');
+(7, 'Asd', 'Asd', 'asd_', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'non_la_mia_mail@mgail.com', 'S0000001');
 
 -- --------------------------------------------------------
 
