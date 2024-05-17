@@ -1,29 +1,18 @@
 function visualizza() {
     let dateFrom = $("#dateFrom").val();
     let dateTo = $("#dateTo").val();
-    let ticketNumber = $("#ticketNumber").val();
     let statusCall = $("#statusCall").val();
 
-    if (dateFrom !== "" && dateTo !== "" && ticketNumber !== "" && statusCall !== ""
-        && dateFrom <= dateTo && ticketNumber > 0
-    ) {
-        let url = "./visualizza.php?";
-        if (dateFrom !== "") {
-            url += "dateFrom=" + dateFrom + "&";
-        }
-        if (dateTo !== "") {
-            url += "dateTo=" + dateTo + "&";
-        }
-        if (ticketNumber !== "") {
-            url += "ticketNumber=" + ticketNumber.toString() + "&";
-        }
-        if (statusCall !== "") {
-            url += "statusCall=" + statusCall;
-        }
-        window.location.href = url;
+    let url = "./visualizza.php?";
+
+    if (dateFrom !== "" && dateTo !== "" && dateFrom > dateTo) {
+        alert("La data di inizio non può essere maggiore della data di fine");
+        return;
     }
-    else {
-        alert("Inserire tutti i campi correttamente");
-    }
-    
+
+    url += "dateFrom=" + dateFrom + "&";
+    url += "dateTo=" + dateTo + "&";
+    url += "statusCall=" + statusCall;
+
+    window.location.href = url;
 }

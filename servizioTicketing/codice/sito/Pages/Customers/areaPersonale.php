@@ -58,10 +58,6 @@ if ($_SESSION["role"] === "employee") {
 
             <div class="row">
                 <div class="col col-6">
-                    <label for="ticketNumber" class="form-label">Numero ticket:</label>
-                    <input type="number" class="form-control border-black input" id="ticketNumber" min="0">
-                </div>
-                <div class="col col-6">
                     <label for="statusCall" class="form-label">Stato chiamata:</label>
                     <select id="statusCall" class="form-control input">
                         <option value="" selected disabled>Seleziona lo stato</option>
