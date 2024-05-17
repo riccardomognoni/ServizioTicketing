@@ -18,7 +18,6 @@ if ($_SESSION["role"] === "employee") {
     header("Location: ../Employees/areaEmployee.php");
     exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +30,8 @@ if ($_SESSION["role"] === "employee") {
     <script src="../../Js/jquery-3.7.1.min.js"></script>
     <script src="../../Cdn/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="../../Js/template.js"></script>
+    <script src="../../Js/request.js"></script>
+    <script src="../../Js/visualizza.js"></script>
     <link rel="stylesheet" href="../../Cdn/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../Css/find.css">
 </head>
@@ -42,7 +43,7 @@ if ($_SESSION["role"] === "employee") {
         </script>
     </nav>
 
-    <div>
+    <div id="tickets">
 
     </div>
 </body>

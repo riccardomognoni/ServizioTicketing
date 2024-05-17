@@ -1,11 +1,13 @@
 function visualizza() {
-    var dateFrom = document.getElementById("dateFrom").value;
-    var dateTo = document.getElementById("dateTo").value;
-    var ticketNumber = document.getElementById("ticketNumber").value;
-    var statusCall = document.getElementById("statusCall").value;
+    let dateFrom = $("#dateFrom").val();
+    let dateTo = $("#dateTo").val();
+    let ticketNumber = $("#ticketNumber").val();
+    let statusCall = $("#statusCall").val();
 
-    if (dateFrom === "" || dateTo === "" || ticketNumber === "" || statusCall === "") {
-        var url = "./visualizza.php?";
+    if (dateFrom !== "" && dateTo !== "" && ticketNumber !== "" && statusCall !== ""
+        && dateFrom <= dateTo && ticketNumber > 0
+    ) {
+        let url = "./visualizza.php?";
         if (dateFrom !== "") {
             url += "dateFrom=" + dateFrom + "&";
         }
@@ -13,12 +15,15 @@ function visualizza() {
             url += "dateTo=" + dateTo + "&";
         }
         if (ticketNumber !== "") {
-            url += "ticketNumber=" + ticketNumber + "&";
+            url += "ticketNumber=" + ticketNumber.toString() + "&";
         }
         if (statusCall !== "") {
             url += "statusCall=" + statusCall;
         }
         window.location.href = url;
+    }
+    else {
+        alert("Inserire tutti i campi correttamente");
     }
     
 }

@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Struttura della tabella `customers`
 --
-
+DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
   `ID` int(11) NOT NULL,
   `nome` varchar(32) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`ID`, `nome`, `cognome`, `username`, `password`, `email`, `idCode`) VALUES
-(2, '', '', 'tizio', 'b133a0c0e9bee3be20163d2ad31d6248db292aa6dcb1ee087a2aa50e0fc75ae2', 'sempronio@ciao.sbuci', NULL),
+(2, '', '', 'tizio_', 'b133a0c0e9bee3be20163d2ad31d6248db292aa6dcb1ee087a2aa50e0fc75ae2', 'sempronio@ciao.sbuci', NULL),
 (7, 'Asd', 'Asd', 'asd_', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'non_la_mia_mail@mgail.com', 'S0000001');
 
 -- --------------------------------------------------------
@@ -50,7 +50,7 @@ INSERT INTO `customers` (`ID`, `nome`, `cognome`, `username`, `password`, `email
 --
 -- Struttura della tabella `employees`
 --
-
+DROP TABLE IF EXISTS `employees`;
 CREATE TABLE `employees` (
   `ID` int(11) NOT NULL,
   `nome` varchar(32) DEFAULT NULL,
@@ -75,7 +75,7 @@ INSERT INTO `employees` (`ID`, `nome`, `cognome`, `username`, `password`, `email
 --
 -- Struttura della tabella `tickets`
 --
-
+DROP TABLE IF EXISTS `tickets`;
 CREATE TABLE `tickets` (
   `ID` int(11) NOT NULL,
   `possibleAction` varchar(16) NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE `tickets` (
 --
 -- Struttura della tabella `ticket_area`
 --
-
+DROP TABLE IF EXISTS `ticket_area`;
 CREATE TABLE `ticket_area` (
   `ID` int(11) NOT NULL,
   `area` varchar(16) NOT NULL
@@ -124,7 +124,7 @@ INSERT INTO `ticket_area` (`ID`, `area`) VALUES
 --
 -- Struttura della tabella `ticket_state`
 --
-
+DROP TABLE IF EXISTS `ticket_state`;
 CREATE TABLE `ticket_state` (
   `ID` int(11) NOT NULL,
   `state` varchar(16) NOT NULL

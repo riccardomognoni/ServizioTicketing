@@ -1,13 +1,19 @@
 $(document).ready(function () {
-    var queryString = window.location.search;
-    var urlParams = new URLSearchParams(queryString);
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
 
-    var dateFrom = urlParams.get('dateFrom');
-    var dateTo = urlParams.get('dateTo');
-    var ticketNumber = urlParams.get('ticketNumber');
-    var statusCall = urlParams.get('statusCall');
-
+    let dateFrom = urlParams.get('dateFrom');
+    let dateTo = urlParams.get('dateTo');
+    let ticketNumber = urlParams.get('ticketNumber');
+    let statusCall = urlParams.get('statusCall');
     
-        
+    data = {
+        dateFrom: dateFrom,
+        dateTo: dateTo,
+        ticketNumber: ticketNumber,
+        statusCall: statusCall
+    };
+
+    let response = request("GET", "../../Ajax/getTicket.php", data);
 
 });
