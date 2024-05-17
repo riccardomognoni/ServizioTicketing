@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 17, 2024 alle 09:35
+-- Creato il: Mag 17, 2024 alle 13:59
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -104,10 +104,10 @@ CREATE TABLE `tickets` (
 
 INSERT INTO `tickets` (`ID`, `id_customer`, `possibleAction`, `state`, `area`, `id_operator`, `description`, `openDate`, `effectiveStart`, `closeDate`, `customerDescription`, `solutionDescription`, `eventualNotes`, `referenceEmail`, `assignedFrom`, `attached`) VALUES
 (1, 7, 'Open', 1, 1, 2, 'Network issues reported in building A.', '2024-05-01 08:30:00', '2024-05-01 09:00:00', '2024-05-01 12:00:00', 'Customer reported intermittent connectivity problems.', 'Replaced faulty switch.', NULL, 'customer1@example.com', '2', 'network_issue.jpg'),
-(2, 7, 'In Progress', 2, 3, 2, 'Error in the payment processing module.', '2024-05-02 09:00:00', '2024-05-02 10:00:00', '0000-00-00 00:00:00', 'Customer unable to process payments.', 'Identified and fixed a bug in the transaction handling.', NULL, 'customer2@example.com', '1', 'payment_error_log.txt'),
-(3, 2, 'Closed', 3, 4, 2, 'Discrepancies in the quarterly financial report.', '2024-05-03 10:00:00', '2024-05-03 11:00:00', '2024-05-03 15:00:00', 'Quarterly report figures do not match.', 'Corrected the data entry errors in the financial system.', 'Reviewed by finance team.', 'customer3@example.com', '2', 'financial_report_issues.pdf'),
-(4, 7, 'Open', 1, 2, 2, 'System upgrade required for AS400 server.', '2024-05-04 11:00:00', '2024-05-04 11:30:00', '0000-00-00 00:00:00', 'System performance has degraded.', 'Planning and scheduling upgrade.', NULL, 'customer4@example.com', '2', 'upgrade_plan.docx'),
-(5, 2, 'Closed', 3, 6, 2, 'Issue with the Derma software update.', '2024-05-05 12:00:00', '2024-05-05 13:00:00', '2024-05-05 17:00:00', 'Update caused software crash.', 'Rolled back the update and applied a fix.', 'Update re-scheduled.', 'customer5@example.com', '2', 'derma_update_fix.zip');
+(2, 7, 'In Progress', 2, 2, 2, 'Error in the payment processing module.', '2024-05-02 09:00:00', '2024-05-02 10:00:00', '0000-00-00 00:00:00', 'Customer unable to process payments.', 'Identified and fixed a bug in the transaction handling.', NULL, 'customer2@example.com', '1', 'payment_error_log.txt'),
+(3, 2, 'Closed', 3, 1, 2, 'Discrepancies in the quarterly financial report.', '2024-05-03 10:00:00', '2024-05-03 11:00:00', '2024-05-03 15:00:00', 'Quarterly report figures do not match.', 'Corrected the data entry errors in the financial system.', 'Reviewed by finance team.', 'customer3@example.com', '2', 'financial_report_issues.pdf'),
+(4, 7, 'Open', 1, 3, 2, 'System upgrade required for AS400 server.', '2024-05-04 11:00:00', '2024-05-04 11:30:00', '0000-00-00 00:00:00', 'System performance has degraded.', 'Planning and scheduling upgrade.', NULL, 'customer4@example.com', '2', 'upgrade_plan.docx'),
+(5, 2, 'Closed', 3, 4, 2, 'Issue with the Derma software update.', '2024-05-05 12:00:00', '2024-05-05 13:00:00', '2024-05-05 17:00:00', 'Update caused software crash.', 'Rolled back the update and applied a fix.', 'Update re-scheduled.', 'customer5@example.com', '2', 'derma_update_fix.zip');
 
 -- --------------------------------------------------------
 
@@ -152,10 +152,10 @@ CREATE TABLE `ticket_state` (
 --
 
 INSERT INTO `ticket_state` (`ID`, `state`) VALUES
-(1, 'Aperto'),
-(2, 'Chiuso'),
-(3, 'Sospeso'),
-(4, 'Annullato');
+(1, 'open'),
+(2, 'close'),
+(3, 'suspended'),
+(4, 'cancelled');
 
 --
 -- Indici per le tabelle scaricate
@@ -183,8 +183,8 @@ ALTER TABLE `employees`
 ALTER TABLE `tickets`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `area` (`area`),
-  ADD KEY `id_operator` (`id_operator`),
-  ADD KEY `state` (`state`);
+  ADD KEY `state` (`state`),
+  ADD KEY `id_operator` (`id_operator`);
 
 --
 -- Indici per le tabelle `ticket_area`
